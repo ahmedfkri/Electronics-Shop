@@ -30,6 +30,7 @@ namespace Electronics_Shop
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Products));
             this.label6 = new System.Windows.Forms.Label();
             this.cmboCat = new System.Windows.Forms.ComboBox();
             this.btnDelete = new System.Windows.Forms.Button();
@@ -54,6 +55,7 @@ namespace Electronics_Shop
             this.sellersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.xToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnNewCat = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.productsGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -73,6 +75,8 @@ namespace Electronics_Shop
             // 
             // cmboCat
             // 
+            this.cmboCat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmboCat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmboCat.Font = new System.Drawing.Font("Segoe UI Black", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cmboCat.FormattingEnabled = true;
             this.cmboCat.Location = new System.Drawing.Point(265, 480);
@@ -102,7 +106,7 @@ namespace Electronics_Shop
             this.btnEdit.ForeColor = System.Drawing.Color.White;
             this.btnEdit.Location = new System.Drawing.Point(49, 642);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(471, 73);
+            this.btnEdit.Size = new System.Drawing.Size(232, 73);
             this.btnEdit.TabIndex = 35;
             this.btnEdit.Text = "EDIT";
             this.btnEdit.UseVisualStyleBackColor = false;
@@ -349,8 +353,24 @@ namespace Electronics_Shop
             this.xToolStripMenuItem.Text = "X";
             this.xToolStripMenuItem.Click += new System.EventHandler(this.xToolStripMenuItem_Click);
             // 
+            // btnNewCat
+            // 
+            this.btnNewCat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(68)))), ((int)(((byte)(46)))));
+            this.btnNewCat.Font = new System.Drawing.Font("Telegrafico", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnNewCat.ForeColor = System.Drawing.Color.White;
+            this.btnNewCat.Location = new System.Drawing.Point(288, 642);
+            this.btnNewCat.Name = "btnNewCat";
+            this.btnNewCat.Size = new System.Drawing.Size(232, 73);
+            this.btnNewCat.TabIndex = 35;
+            this.btnNewCat.Text = "New Category";
+            this.btnNewCat.UseVisualStyleBackColor = false;
+            this.btnNewCat.Click += new System.EventHandler(this.btnNewCat_Click);
+            this.btnNewCat.MouseEnter += new System.EventHandler(this.btnNewCat_MouseEnter);
+            this.btnNewCat.MouseLeave += new System.EventHandler(this.btnNewCat_MouseLeave);
+            // 
             // Products
             // 
+            this.AcceptButton = this.btnAdd;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(1)))), ((int)(((byte)(34)))));
@@ -362,6 +382,7 @@ namespace Electronics_Shop
             this.Controls.Add(this.label6);
             this.Controls.Add(this.cmboCat);
             this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.btnNewCat);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.productsGridView);
@@ -375,6 +396,7 @@ namespace Electronics_Shop
             this.Controls.Add(this.txtProID);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Products";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Products";
@@ -414,5 +436,6 @@ namespace Electronics_Shop
         private System.Windows.Forms.ToolStripMenuItem sellersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem logOutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem xToolStripMenuItem;
+        private System.Windows.Forms.Button btnNewCat;
     }
 }

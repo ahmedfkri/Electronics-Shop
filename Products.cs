@@ -92,7 +92,7 @@ namespace Electronics_Shop
             DataTable TB = new DataTable();
             DA.Fill(TB);
             productsGridView.DataSource = TB;
-            productsGridView.RowTemplate.Height = 75;
+            productsGridView.RowTemplate.Height = 130;
             DataGridViewImageColumn im = new DataGridViewImageColumn();
             im = (DataGridViewImageColumn)productsGridView.Columns[5];
             im.ImageLayout = DataGridViewImageCellLayout.Stretch; 
@@ -176,6 +176,9 @@ namespace Electronics_Shop
         private void Products_Load(object sender, EventArgs e)
         {
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            productsGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            productsGridView.RowTemplate.Height = 130;
+            productsGridView.AllowUserToAddRows = false;
             getTable();
             getCat();
 
@@ -250,22 +253,27 @@ namespace Electronics_Shop
         {
             if (txtProID.Text != "")
             {
-                try
+                DialogResult result = MessageBox.Show("Are You Sure You Want To Delete This Product", "Confirmation", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
                 {
-                    string deleteQ="Delete from Products_tb WHERE ProID="+txtProID.Text+" ";
-                    SqlCommand com = new SqlCommand(deleteQ, Con.getCon());
-                    Con.open();
-                    com.ExecuteNonQuery();
-                    MessageBox.Show("Product Deleted", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Con.close();
-                    getTable();
-                    clear();
+                    try
+                    {
+                        string deleteQ = "Delete from Products_tb WHERE ProID=" + txtProID.Text + " ";
+                        SqlCommand com = new SqlCommand(deleteQ, Con.getCon());
+                        Con.open();
+                        com.ExecuteNonQuery();
+                        MessageBox.Show("Product Deleted", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Con.close();
+                        getTable();
+                        clear();
 
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                 }
-                catch(Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
+                    
             }
             else
             {
@@ -332,6 +340,27 @@ namespace Electronics_Shop
         private void btnBrowse_MouseHover(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnNewCat_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Do You Want To Add New Category?", "Confirmation", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                Categories Cat = new Categories();
+                Cat.Show();
+                this.Hide();
+            }
+        }
+
+        private void btnNewCat_MouseEnter(object sender, EventArgs e)
+        {
+            btnNewCat.BackColor = Color.FromArgb(252, 47, 0);
+        }
+
+        private void btnNewCat_MouseLeave(object sender, EventArgs e)
+        {
+            btnEdit.BackColor = Color.FromArgb(244, 68, 46);
         }
     }
 }
