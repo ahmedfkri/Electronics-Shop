@@ -198,24 +198,30 @@ namespace Electronics_Shop
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            
             if (txtSellerID.Text != "")
             {
-                try
+                DialogResult result = MessageBox.Show("Are You Sure You Want To Delete This Seller", "Confirmation", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
                 {
-                    string deleteQ = "Delete from Sellers_tb WHERE SellerID=" + txtSellerID.Text + " ";
-                    SqlCommand com = new SqlCommand(deleteQ, Con.getCon());
-                    Con.open();
-                    com.ExecuteNonQuery();
-                    MessageBox.Show("Product Deleted", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Con.close();
-                    getTable();
-                    clear();
+                    try
+                    {
+                        string deleteQ = "Delete from Sellers_tb WHERE SellerID=" + txtSellerID.Text + " ";
+                        SqlCommand com = new SqlCommand(deleteQ, Con.getCon());
+                        Con.open();
+                        com.ExecuteNonQuery();
+                        MessageBox.Show("Seller Deleted", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Con.close();
+                        getTable();
+                        clear();
 
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
+                    
             }
             else
             {

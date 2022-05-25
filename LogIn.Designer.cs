@@ -29,6 +29,7 @@ namespace Electronics_Shop
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LogIn));
             this.btnLogin = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -113,6 +114,7 @@ namespace Electronics_Shop
             // 
             // cmboRole
             // 
+            this.cmboRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmboRole.Font = new System.Drawing.Font("29LT Bukra Bold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.cmboRole.FormattingEnabled = true;
             this.cmboRole.Items.AddRange(new object[] {
@@ -135,9 +137,12 @@ namespace Electronics_Shop
             this.label4.TabIndex = 12;
             this.label4.Text = "X";
             this.label4.Click += new System.EventHandler(this.label4_Click);
+            this.label4.MouseEnter += new System.EventHandler(this.label4_MouseEnter);
+            this.label4.MouseLeave += new System.EventHandler(this.label4_MouseLeave);
             // 
             // LogIn
             // 
+            this.AcceptButton = this.btnLogin;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(1)))), ((int)(((byte)(34)))));
@@ -151,6 +156,7 @@ namespace Electronics_Shop
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.txtPass);
             this.Controls.Add(this.cmboRole);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "LogIn";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LogIn";

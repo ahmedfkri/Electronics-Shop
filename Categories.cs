@@ -159,21 +159,26 @@ namespace Electronics_Shop
         {
             if (txtCatID.Text != "")
             {
-                try
+                DialogResult result = MessageBox.Show("Are You Sure You Want To Delete This Category", "Confirmation", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
                 {
-                    string deleteQ = "DELETE FROM Categ_tb WHERE CatID=" + txtCatID.Text + " ";
-                    SqlCommand com = new SqlCommand(deleteQ, Con.getCon());
-                    Con.open();
-                    com.ExecuteNonQuery();
-                    MessageBox.Show("Category Deleted", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Con.close();
-                    getTable();
+                    try
+                    {
+                        string deleteQ = "DELETE FROM Categ_tb WHERE CatID=" + txtCatID.Text + " ";
+                        SqlCommand com = new SqlCommand(deleteQ, Con.getCon());
+                        Con.open();
+                        com.ExecuteNonQuery();
+                        MessageBox.Show("Category Deleted", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Con.close();
+                        getTable();
 
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                 }
-                catch(Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
+                    
             }
             else
             {
