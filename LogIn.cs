@@ -73,7 +73,12 @@ namespace Electronics_Shop
 
         private void label4_Click(object sender, EventArgs e)
         {
-            this.Close();
+            DialogResult result = MessageBox.Show("You Want To EXIT?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
+                Application.Exit();
+            }
         }
 
         private void label4_MouseEnter(object sender, EventArgs e)

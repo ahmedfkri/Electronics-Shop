@@ -68,6 +68,9 @@ namespace Electronics_Shop
             this.xToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label8 = new System.Windows.Forms.Label();
             this.btnDeleteBill = new System.Windows.Forms.Button();
+            this.btnDeletePro = new System.Windows.Forms.Button();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             ((System.ComponentModel.ISupportInitialize)(this.billsGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productsGridView)).BeginInit();
@@ -76,6 +79,7 @@ namespace Electronics_Shop
             // 
             // cmboCat
             // 
+            this.cmboCat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmboCat.Font = new System.Drawing.Font("Segoe UI Black", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.cmboCat.FormattingEnabled = true;
             this.cmboCat.Location = new System.Drawing.Point(54, 491);
@@ -155,6 +159,7 @@ namespace Electronics_Shop
             this.orderGridView.RowTemplate.Height = 29;
             this.orderGridView.Size = new System.Drawing.Size(962, 307);
             this.orderGridView.TabIndex = 21;
+            this.orderGridView.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.orderGridView_CellMouseClick);
             // 
             // ProdID
             // 
@@ -429,6 +434,7 @@ namespace Electronics_Shop
             this.btnPrintBill.TabIndex = 26;
             this.btnPrintBill.Text = "Print Bill";
             this.btnPrintBill.UseVisualStyleBackColor = false;
+            this.btnPrintBill.Click += new System.EventHandler(this.btnPrintBill_Click);
             // 
             // btnAddBill
             // 
@@ -510,6 +516,35 @@ namespace Electronics_Shop
             this.btnDeleteBill.UseVisualStyleBackColor = false;
             this.btnDeleteBill.Click += new System.EventHandler(this.btnDeleteBill_Click);
             // 
+            // btnDeletePro
+            // 
+            this.btnDeletePro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(68)))), ((int)(((byte)(46)))));
+            this.btnDeletePro.Font = new System.Drawing.Font("Telegrafico", 19F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnDeletePro.ForeColor = System.Drawing.Color.White;
+            this.btnDeletePro.Location = new System.Drawing.Point(1334, 464);
+            this.btnDeletePro.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnDeletePro.Name = "btnDeletePro";
+            this.btnDeletePro.Size = new System.Drawing.Size(398, 54);
+            this.btnDeletePro.TabIndex = 26;
+            this.btnDeletePro.Text = "Remove Item";
+            this.btnDeletePro.UseVisualStyleBackColor = false;
+            this.btnDeletePro.Click += new System.EventHandler(this.btnDeletePro_Click);
+            // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+            // 
+            // printPreviewDialog1
+            // 
+            this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialog1.Document = this.printDocument1;
+            this.printPreviewDialog1.Enabled = true;
+            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
+            this.printPreviewDialog1.Name = "printPreviewDialog1";
+            this.printPreviewDialog1.Visible = false;
+            // 
             // Selling
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -519,6 +554,7 @@ namespace Electronics_Shop
             this.ControlBox = false;
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.btnDeleteBill);
+            this.Controls.Add(this.btnDeletePro);
             this.Controls.Add(this.btnPrintBill);
             this.Controls.Add(this.btnAddBill);
             this.Controls.Add(this.btnAll);
@@ -593,5 +629,8 @@ namespace Electronics_Shop
         private System.Windows.Forms.ToolStripMenuItem xToolStripMenuItem;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnDeleteBill;
+        private System.Windows.Forms.Button btnDeletePro;
+        private System.Drawing.Printing.PrintDocument printDocument1;
+        private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
     }
 }

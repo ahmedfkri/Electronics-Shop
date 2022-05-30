@@ -158,7 +158,7 @@ namespace Electronics_Shop
                 SqlCommand com = new SqlCommand(insertQ, Con.getCon());
                 com.Parameters.AddWithValue("@ProImg", getImg());
                 com.ExecuteNonQuery();
-                MessageBox.Show("Done");
+                MessageBox.Show("Product Added ^^","",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 getTable();
             }
             catch(Exception ex)
@@ -297,14 +297,24 @@ namespace Electronics_Shop
 
         private void logOutToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            LogIn log = new LogIn();
-            log.Show();
-            this.Hide();
+            DialogResult result = MessageBox.Show("You Want To Logout?", "Confirmation", MessageBoxButtons.YesNo,MessageBoxIcon.Information);
+            if (result == DialogResult.Yes)
+            {
+                LogIn log = new LogIn();
+                log.Show();
+                this.Hide();
+            }
+
         }
 
         private void xToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Close();
+            DialogResult result = MessageBox.Show("You Want To EXIT?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
+                Application.Exit();
+            }
         }
 
         private void btnAdd_MouseEnter(object sender, EventArgs e)
