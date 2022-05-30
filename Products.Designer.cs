@@ -56,6 +56,7 @@ namespace Electronics_Shop
             this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.xToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnNewCat = new System.Windows.Forms.Button();
+            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             ((System.ComponentModel.ISupportInitialize)(this.productsGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -244,6 +245,7 @@ namespace Electronics_Shop
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Image = global::Electronics_Shop.Properties.Resources.dollar_dynamic_gradient_min;
             this.pictureBox1.Location = new System.Drawing.Point(1015, 138);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(297, 201);
@@ -368,6 +370,16 @@ namespace Electronics_Shop
             this.btnNewCat.MouseEnter += new System.EventHandler(this.btnNewCat_MouseEnter);
             this.btnNewCat.MouseLeave += new System.EventHandler(this.btnNewCat_MouseLeave);
             // 
+            // printPreviewDialog1
+            // 
+            this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialog1.Enabled = true;
+            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
+            this.printPreviewDialog1.Name = "printPreviewDialog1";
+            this.printPreviewDialog1.Visible = false;
+            // 
             // Products
             // 
             this.AcceptButton = this.btnAdd;
@@ -437,5 +449,6 @@ namespace Electronics_Shop
         private System.Windows.Forms.ToolStripMenuItem logOutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem xToolStripMenuItem;
         private System.Windows.Forms.Button btnNewCat;
+        private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
     }
 }

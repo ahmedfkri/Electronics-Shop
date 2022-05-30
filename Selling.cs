@@ -15,6 +15,8 @@ namespace Electronics_Shop
     {
         Access Con = new Access();
         int grandTotal = 0, n = 0;
+        int QTE = 0;
+        int proID;
         public Selling()
         {
             InitializeComponent();
@@ -128,14 +130,24 @@ namespace Electronics_Shop
 
         private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            LogIn log = new LogIn();
-            log.Show();
-            this.Hide();
+            DialogResult result = MessageBox.Show("You Want To Logout?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            if (result == DialogResult.Yes)
+            {
+                LogIn log = new LogIn();
+                log.Show();
+                this.Hide();
+            }
+              
         }
 
         private void xToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Close();
+            DialogResult result = MessageBox.Show("You Want To EXIT?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
+                Application.Exit();
+            }
         }
 
         private void btnDeleteBill_Click(object sender, EventArgs e)
@@ -211,6 +223,79 @@ namespace Electronics_Shop
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void orderGridView_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = orderGridView.Rows[e.RowIndex];
+
+                QTE =Convert.ToInt32(row.Cells[3].Value.ToString());
+            }
+
+        }
+
+        private void btnDeletePro_Click(object sender, EventArgs e)
+        {
+
+
+
+                DialogResult result = MessageBox.Show("Are You Sure You Want To Delete This Item", "Confirmation", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    foreach (DataGridViewRow item in this.orderGridView.SelectedRows)
+                    {
+                        orderGridView.Rows.RemoveAt(item.Index);
+                    }
+                }
+
+
+        }
+
+        private void printPreviewDialog1_Load(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            string doc = "";
+            if (billsGridView.SelectedRows.Count >= 0)
+            {
+                doc += "Bill ID: "+billsGridView.SelectedRows[0].Cells[0].Value.ToString();
+                doc += "\nSeller Name: " + billsGridView.SelectedRows[0].Cells[1].Value.ToString();
+                doc += "\nBill Date: " + billsGridView.SelectedRows[0].Cells[2].Value.ToString();
+                doc += "\nBill Total: " + billsGridView.SelectedRows[0].Cells[3].Value.ToString();
+
+            }
+
+            e.Graphics.DrawString(doc, new Font("Times New Roman", 36, FontStyle.Bold), Brushes.Black, new Point(25, 25));
+        }
+
+        private void btnPrintBill_Click(object sender, EventArgs e)
+        {
+
+
+            if (billsGridView.SelectedRows.Count >= 0)
+            {
+                Print pr = new Print();
+                pr.Id = billsGridView.SelectedRows[0].Cells[0].Value.ToString();
+                pr.Name = billsGridView.SelectedRows[0].Cells[1].Value.ToString();
+                pr.Date = billsGridView.SelectedRows[0].Cells[2].Value.ToString();
+                pr.Total = billsGridView.SelectedRows[0].Cells[3].Value.ToString();
+
+                pr.ShowDialog();
+            }
+
+
+
+            //////
+            //Normal Method
+            ///// 
+
+            //printPreviewDialog1.ShowDialog();
         }
 
         private void Selling_Load(object sender, EventArgs e)

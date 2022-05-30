@@ -122,7 +122,7 @@ namespace Electronics_Shop
             {
                 try
                 {
-                    string editQ = "UPDATE Categ_tb SET CatName='" + txtCatName.Text + "', CatDes=" + txtCatDes.Text + " WHERE CatID=" + txtCatID.Text + " ";
+                    string editQ = "UPDATE Categ_tb SET CatName='" + txtCatName.Text + "', CatDes='" + txtCatDes.Text + "' WHERE CatID=" + txtCatID.Text + " ";
 
                     SqlCommand com = new SqlCommand(editQ, Con.getCon());
                     Con.open();
@@ -209,14 +209,24 @@ namespace Electronics_Shop
 
         private void xToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Close();
+            DialogResult result = MessageBox.Show("You Want To EXIT?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
+                Application.Exit();
+            }
         }
 
         private void logOutToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            LogIn log = new LogIn();
-            log.Show();
-            this.Hide();
+            DialogResult result = MessageBox.Show("You Want To Logout?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            if (result == DialogResult.Yes)
+            {
+                LogIn log = new LogIn();
+                log.Show();
+                this.Hide();
+            }
+                
         }
 
         private void productsToolStripMenuItem_Click_2(object sender, EventArgs e)

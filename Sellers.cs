@@ -150,9 +150,14 @@ namespace Electronics_Shop
 
         private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            LogIn log = new LogIn();
-            log.Show();
-            this.Hide();
+            DialogResult result = MessageBox.Show("You Want To Logout?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            if (result == DialogResult.Yes)
+            {
+                LogIn log = new LogIn();
+                log.Show();
+                this.Hide();
+            }
+               
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -266,7 +271,13 @@ namespace Electronics_Shop
 
         private void xToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Close();
+            DialogResult result = MessageBox.Show("You Want To EXIT?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
+                Application.Exit();
+            }
+                
         }
 
         private void btnEdit_MouseEnter(object sender, EventArgs e)
